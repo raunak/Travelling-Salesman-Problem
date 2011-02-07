@@ -1,0 +1,1 @@
+The aim of this program is to use a genetic algorithm to find low cost solutions to the travelling salesman problem (TSP). The algorithm makes use of ox operator for crossover, swap operator for mutation, and tournament selection for selecting the fittest individual from the population.
