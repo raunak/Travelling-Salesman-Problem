@@ -1,4 +1,4 @@
-import Genetic
+import Genetic, euclidean
 
 print "Initialising"
 genetic = Genetic.Genetic()
@@ -10,7 +10,7 @@ genetic.file_name = "tspadata2.txt"
 genetic.read_file()
 
 #set number of parents
-genetic.no_of_parents = 1000
+genetic.population_size = 1000
 
 
 #Create population
@@ -22,19 +22,8 @@ genetic.calc_crossover_point()
 #calculate fitness
 genetic.fitness()
 
-
-cost = 0
-
 while genetic.generation < 1000:
-  genetic.cool()
+  genetic.evaluate()
+  genetic.tmp_function()
+  print ("%d -> %d - > %s") % (genetic.generation, genetic.fittest[0], genetic.fittest[1])
 
-  tmp =genetic.population_cost_matrix
-  genetic.sort_selection(tmp)
-  nCost =  tmp[0][0]
-
-  if cost != nCost:
-	print ("%d -> %f") % (genetic.generation, nCost)
-	cost = nCost
-
-for p in genetic.population_cost_matrix:
-	print p
