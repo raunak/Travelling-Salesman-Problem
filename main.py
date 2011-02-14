@@ -1,29 +1,63 @@
-import Genetic, euclidean
+import tsp, euclidean
 
 print "Initialising"
-genetic = Genetic.Genetic()
+ox = "OX"
+edge_recombination = "EDGERECOMBINATION"
 
-#Set file name
-genetic.file_name = "tspadata2.txt"
+# #initialize class
+# tsp = tsp.TSP()
 
-#read file
-genetic.read_file()
+# #Set file name
+# tsp.file_name = "tspadata2.txt"
 
-#set number of parents
-genetic.population_size = 1000
+# #read file
+# tsp.read_file()
 
+# #set number of parents
+# tsp.population_size = 1000
 
-#Create population
-genetic.create_population()
+# #Create population
+# tsp.create_population()
 
-#Calcuate the crossover points
-genetic.calc_crossover_point()
+# #Calcuate the crossover points
+# tsp.calc_crossover_point()
+
+# #calculate fitness
+# tsp.fitness()
+
+# while tsp.generation < 1000:
+#   tsp.evaluate_generation(edge_recombination)
+#   print ("Generation %d") % (tsp.generation)
+
+# soln = tsp.optimal_solution()
+# print ("%d -> %d - > %s") % (tsp.generation, soln[0], soln[1])
+
+#initialize class
+euc = euclidean.Euclidean()
+
+#set grid size
+euc.grid_size = 50
+
+#create euclidean space
+euc.create_euclidean_space()
+
+#set size of population
+euc.population_size = 20
+
+#create population
+euc.create_population()
+
+#calculate crossover points
+euc.calc_crossover_points()
 
 #calculate fitness
-genetic.fitness()
+euc.fitness()
 
-while genetic.generation < 1000:
-  genetic.evaluate()
-  genetic.tmp_function()
-  print ("%d -> %d - > %s") % (genetic.generation, genetic.fittest[0], genetic.fittest[1])
+while euc.generation < 1000:
+  euc.evaluate_generation(edge_recombination)
+  print ("Generation %d") % (euc.generation)
+  # soln = euc.optimal_solution()
+  # print ("%d -> %d - > %s") % (euc.generation, soln[0], soln[1])
 
+soln = euc.optimal_solution()
+print ("%d -> %d - > %s") % (euc.generation, soln[0], soln[1])
